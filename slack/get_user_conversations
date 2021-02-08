@@ -1,7 +1,7 @@
 #!/bin/bash
 
 curl \
--H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-"https://slack.com/api/users.conversations?user=$SLACK_USER_ID" \
+-H "Authorization: Bearer $SLACK_USER_TOKEN" \
+"https://slack.com/api/users.conversations?user=$SLACK_USER_ID&types=public_channel,private_channel" \
 | jq -r '.channels[] | [.id, .name] | join("-")' \
 | xargs | sed "s/\s/,/g;s/./$1:&/"
