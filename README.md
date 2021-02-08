@@ -42,3 +42,8 @@ Suggestions/contributions always welcome.
 Using your preferred plugin manager or if all else fails:
 
 `git clone https://github.com/alyosha/vim-slack ~/.vim/bundle/vim-slack`
+
+## Screenshots
+![send example](images/send-example.png)
+![forward yanked example](images/fwd-yanked-example.png)
+
