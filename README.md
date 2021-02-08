@@ -6,9 +6,10 @@ minimal vim slack client
 - `Send` => send a new message to a conversation of your choosing
 - `Check` => check last 50 messages in a conversation of your choosing
 
-Planned functionality includes some updates around message viewing (reply, etc.)
-and mapping of internal Slack user ID to username for readability when viewing
-messages.
+Planned functionality includes:
+- Updates around message viewing (reply, etc.)
+- Mapping of internal Slack user ID to username for readability
+- Support for IM/MPIM conversations
 
 ## Setup
 You'll need to create a new bot for your Slack workspace to use the plugin.
@@ -16,21 +17,15 @@ You'll need to create a new bot for your Slack workspace to use the plugin.
 First hop on over to https://api.slack.com and create a new app. Then navigate
 to the Oauth & Permissions tab and add the following scopes:
 
-**BOT TOKEN SCOPES**
-- `channels:read`
-- `groups:read`
-- `im:read`
-- `mpim:read`
-
 **USER TOKEN SCOPES**
 - `channels:history`
+- `groups:history`
 - `chat:write`
 
-Then copy the two tokens at the top of this page and assign them to the
-following env variables, respectively:
+Then copy the token at the top of this page and assign it to the
+following env variable:
 
 - `SLACK_USER_TOKEN` =>  `OAuth Access Token`
-- `SLACK_BOT_TOKEN` =>  `Bot User OAuth Access Token`
 
 Finally, please set your Slack user ID in the `SLACK_USER_ID` env variable.
 You can find your ID by opening your profile in Slack and clicking `More`.
