@@ -2,6 +2,6 @@
 
 curl \
 -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
-"https://slack.com/api/users.conversations?user=$USER_ID" \
+"https://slack.com/api/users.conversations?user=$SLACK_USER_ID" \
 | jq -r '.channels[] | [.id, .name] | join("-")' \
 | xargs | sed "s/\s/,/g;s/./$1:&/"
