@@ -1,0 +1,35 @@
+#!/bin/bash
+
+MSG=$(sed 's/"/\\"/g' <<< $2)
+MSG=$(sed 's/\^\@//g' <<< $MSG)
+
+if [ "$3" = "block" ] ; then
+  MSG=\`\`\`$MSG\`\`\`
+fi
+
+BLOCKS="[
+  {
+    \"type\": \"section\",
+    \"text\": {
+      \"type\": \"mrkdwn\",
+      \"text\": \"$MSG\"
+    }
+  },
+  {
+    \"type\": \"context\",
+    \"elements\": [
+      {
+        \"type\": \"mrkdwn\",
+        \"text\": \"_sent from vim_\"
+      }
+    ]
+  }
+]"
+
+POST_DATA="{\"channel\": \"$1\", \"blocks\": $BLOCKS}"
+
+curl -X POST \
+-H "Content-type: application/json" \
+-H "Authorization: Bearer $SLACK_USER_TOKEN" \
+--data "$POST_DATA" \
+"https://slack.com/api/chat.postMessage"

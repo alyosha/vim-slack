@@ -1,0 +1,7 @@
+#!/bin/bash
+
+curl \
+-H "Authorization: Bearer $SLACK_USER_TOKEN" \
+"https://slack.com/api/conversations.history?channel=$1&limit=50" | jq . \
+| jq -r '.messages[] | [(("_MSG_START_" + .user + .username) + "." + .ts), .text] | join(" => ")' \
+| xargs -0 -d '\n'
