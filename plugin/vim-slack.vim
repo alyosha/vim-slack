@@ -26,7 +26,7 @@ fu! s:GetConversationsCallback(channel, msg)
 endfu
 
 fu! s:PresentOptions(cmd_type, options)
-  vnew | exe 'vert resize '.(&columns/len(a:options))
+  vnew | exe 'vert resize '.(&columns/4)
   setl bh=wipe bt=nofile nobl noswf nowrap
   sil! 0put = a:options
 
